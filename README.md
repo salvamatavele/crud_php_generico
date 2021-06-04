@@ -1,2 +1,2 @@
-# crud_php_gen-rico-
-Apenas para aprendizado sinta-se a vontade para melhorar. 
+# crud_php_generico
+Apenas para aprendizado, sinta-se a vontade para melhorar. 
