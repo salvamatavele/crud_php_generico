@@ -4,7 +4,7 @@ services:
   apache:
     image: httpd:2.4-alpine
     ports:
-      - "80:80"
+      - "8001:80"
     volumes:
       - ./html:/usr/local/apache2/htdocs/
     depends_on:
