@@ -1,1 +1,29 @@
+version: "3.8"
 
+services:
+  apache:
+    image: httpd:2.4-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./html:/usr/local/apache2/htdocs/
+    depends_on:
+      - php
+
+  php:
+    image: php:8.2-apache-alpine
+    volumes:
+      - ./html:/var/www/html/
+    ports:
+      - "9000:9000" # needed for php-fpm if you change to fpm.
+    environment:
+      PHP_INI_DIR: /usr/local/etc/php
+      PHP_UPLOAD_MAX_FILESIZE: 10M
+      PHP_POST_MAX_SIZE: 10M
+    volumes:
+      - ./php.ini:/usr/local/etc/php/conf.d/custom.ini
+    depends_on:
+      - apache
+
+volumes:
+  html:
